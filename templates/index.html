@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sohel - Gym Trainer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Oswald aur Roboto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Hamari custom CSS file (Path theek kar diya hai) -->
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+<body class="bg-black text-white">
+
+    <!-- == Header Section == -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-20"> <!-- Increased z-index -->
+        <div class="container mx-auto max-w-7xl px-4">
+            <nav class="flex justify-between items-center py-6">
+                
+                <!-- Logo -->
+                <a href="{{url_for('home')}}" class="text-4xl font-bold font-oswald text-white">SOHEL</a>
+
+                <!-- Menu Links (Large screens) -->
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="{{ url_for('home') }}" class="font-bold hover:text-red-500 transition-colors">HOME</a>
+                    <a href="{{ url_for('about') }}" class="font-bold hover:text-red-500 transition-colors">ABOUT</a>
+                    <a href="{{url_for('courses')}}" class="font-bold hover:text-red-500 transition-colors">COURSES</a>
+                    <a href="{{url_for('pricing')}}" class="font-bold hover:text-red-500 transition-colors">PRICING</a>
+                    <a href="{{url_for('gallery')}}" class="font-bold hover:text-red-500 transition-colors">GALLERY</a>
+                    <a href="#" class="font-bold hover:text-red-500 transition-colors">BLOG</a>
+                    <a href="{{url_for('contact')}}" class="font-bold hover:text-red-500 transition-colors">CONTACT</a>
+                </div>
+
+                <!-- Contact Button (Large screens) -->
+                <a href="{{url_for('contact')}}" class="hidden lg:inline-block bg-brand-red text-white font-bold py-3 px-6 hover:bg-white hover:text-black transition-colors">
+                    CONTACT ME
+                </a>
+                
+                <!-- Mobile Menu Button (Small screens) -->
+                <button class="lg:hidden text-white text-3xl">
+                    &#9776; <!-- Hamburger icon -->
+                </button>
+
+            </nav>
+        </div>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages-container pt-24 px-4" style="position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 90%; max-width: 600px; z-index: 1050;"> <!-- Basic positioning -->
+                {% for category, message in messages %}
+                    <!-- Har message ke liye ek alert box banega -->
+                    <!-- Category ke hisaab se style lagane ke liye classes use ki hain -->
+                    <div class="flash-message flash-{{ category }} mb-4" role="alert">
+                        {{ message }}
+                        <!-- Close button (optional) -->
+                        <button type="button" class="flash-close" onclick="this.parentElement.style.display='none';">&times;</button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <main>
+        <!-- == Hero Section == -->
+        <!-- FIX: Removed extra 'r' at the end of the section tag -->
+        <section class="hero-section h-screen flex items-center relative"> 
+            
+            <!-- Hero Content -->
+            <div class="container mx-auto max-w-7xl px-4 relative z-10"> <!-- z-index pehle se tha -->
+                <div class="w-full lg:w-1-2">
+                    <h2 class="text-4xl font-oswald text-white uppercase">Hi this is Sohel</h2>
+                    <h1 class="text-8xl font-oswald font-bold text-white uppercase leading-none my-4">Gym Trainer</h1>
+                    <a href="{{url_for('courses')}}" class="inline-block border-2 border-white text-white font-bold py-3 px-8 mt-6 hover:bg-white hover:text-black transition-colors">
+                        MY COURSES
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- == Training Section == -->
+        <section class="training-section w-full flex flex-col lg:flex-row relative z-10"> <!-- Added relative z-10 -->
+            
+            <!-- Personal Training Card -->
+            <div class="training-card training-card-1 w-full lg:w-1-2"> 
+                <div> 
+                    <!-- FIX: Corrected typo 'cbold' to 'font-bold' -->
+                    <h2 class="text-5xl font-oswald font-bold text-white uppercase">Personal Traning</h2> 
+                    <p class="text-gray-300 my-4">You’ll look at graphs and charts in Task One, how to approach the task and the language needed for a successful answer.</p>
+                    <a href="{{url_for('courses')}}" class="view-courses-btn-bordered"> 
+                        VIEW COURSES
+                    </a>
+                </div>
+            </div>
+
+            <!-- Group Training Card -->
+            <div class="training-card training-card-2 w-full lg:w-1-2"> 
+                <div> 
+                    <h2 class="text-5xl font-oswald font-bold text-white uppercase">Group Traning</h2>
+                    <p class="text-gray-300 my-4">You’ll look at graphs and charts in Task One, how to approach the task and the language needed for a successful answer.</p>
+                    <a href="{{url_for('courses')}}" class="view-courses-btn-red">
+                        VIEW COURSES
+                    </a>
+                </div>
+            </div>
+
+        </section>
+        
+        <!-- == Offers Section == -->
+        <section class="offers-section py-24 px-4 relative z-10 bg-black">
+            <div class="container mx-auto max-w-7xl text-center">
+                <!-- Section Title -->
+                <h2 class="section-title text-8xl font-oswald font-bold uppercase mb-16">
+                    What I Offer
+                </h2>
+
+                <!-- Offers Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <!-- Offer Card 1: Body Building -->
+                    <div class="offer-card">
+                        <img src="{{url_for('static',filename='images/h1_bicepcurl.png')}}" alt="Body Building" class="w-full h-auto object-cover mb-6"> 
+                        <h3 class="text-3xl font-oswald font-bold text-white uppercase mb-4">Body Building</h3>
+                        <p class="text-gray-400">You’ll look at graphs and charts in Task One, how to approach the task.</p>
+                    </div>
+
+                    <!-- Offer Card 2: Muscle Gain -->
+                    <div class="offer-card">
+                        <img src="{{url_for('static',filename='images/h1_sleevless.png')}}" alt="Muscle Gain" class="w-full h-auto object-cover mb-6">
+                        <h3 class="text-3xl font-oswald font-bold text-white uppercase mb-4">Muscle Gain</h3>
+                        <p class="text-gray-400">You’ll look at graphs and charts in Task One, how to approach the task.</p>
+                    </div>
+
+                    <!-- Offer Card 3: Weight Loss -->
+                    <div class="offer-card">
+                        <img src="{{url_for('static',filename='images/h1_girl_backside.png')}}" alt="Weight Loss" class="w-full h-auto object-cover mb-6">
+                        <h3 class="text-3xl font-oswald font-bold text-white uppercase mb-4">Weight Loss</h3>
+                        <p class="text-gray-400">You’ll look at graphs and charts in Task One, how to approach the task.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- == Gallery Section == -->
+        <section class="gallery-section relative z-10 bg-black overflow-hidden p-0"> 
+            <div class="gallery-grid grid grid-cols-2 md:grid-cols-3"> 
+                
+                <!-- Image 1 -->
+                <div class="gallery-item relative overflow-hidden group">
+                    <img src="{{url_for('static',filename='images/h1_gallery6.png')}}" alt="Gallery Image 1" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div class="gallery-overlay absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-end p-6 md:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl md:text-2xl font-oswald font-bold text-white uppercase mb-2">Muscle Gaining</h3>
+                        <div class="gallery-icon"></div>
+                    </div>class="gallery-overlay absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-end p-6 md:pd-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                </div>
+                
+                 <!-- Image 2 (Tall) -->
+                <div class="gallery-item relative overflow-hidden group md:row-span-2"> 
+                    <img src="{{url_for('static',filename='images/h1_gallery5.png')}}" alt="Gallery Image 2" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div class="gallery-overlay absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-end p-6 md:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl md:text-2xl font-oswald font-bold text-white uppercase mb-2">Weight Loss</h3>
+                        <div class="gallery-icon"></div>
+                    </div>
+                </div>
+                 
+                 <!-- Image 3 -->
+                <div class="gallery-item relative overflow-hidden group">
+                    <img src="{{url_for('static',filename='images/h1_gallery4.png')}}" alt="Gallery Image 3" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div class="gallery-overlay absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-end p-6 md:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl md:text-2xl font-oswald font-bold text-white uppercase mb-2">Body Building</h3>
+                        <div class="gallery-icon"></div>
+                    </div>
+                </div>
+                 
+                 <!-- Image 4 -->
+                <div class="gallery-item relative overflow-hidden group">
+                    <img src="{{url_for('static',filename='images/h1_gallery3.png')}}" alt="Gallery Image 4" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div class="gallery-overlay absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-end p-6 md:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl md:text-2xl font-oswald font-bold text-white uppercase mb-2">Fitness</h3>
+                        <div class="gallery-icon"></div>
+                    </div>
+                </div>
+
+                 <!-- Image 5 (Tall) -->
+                 <div class="gallery-item relative overflow-hidden group md:row-span-2"> 
+                    <img src="{{url_for('static',filename='images/h1_gallery2.png')}}" alt="Gallery Image 5" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div class="gallery-overlay absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-end p-6 md:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl md:text-2xl font-oswald font-bold text-white uppercase mb-2">Cardio</h3>
+                        <div class="gallery-icon"></div>
+                    </div>
+                </div>
+                 
+                 <!-- Image 6 -->
+                <div class="gallery-item relative overflow-hidden group">
+                    <img src="{{url_for('static',filename='images/h1_gallery1.png')}}" alt="Gallery Image 6" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div class="gallery-overlay absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-end p-6 md:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl md:text-2xl font-oswald font-bold text-white uppercase mb-2">Strength</h3>
+                        <div class="gallery-icon"></div>
+                    </div>
+                </div>
+
+            </div> 
+        </section>
+
+        <!-- == Pricing Section == -->
+        <section class="pricing-section py-24 px-4 relative z-10 bg-black">
+            <div class="container mx-auto max-w-7xl text-center">
+                <!-- Section Title -->
+                <h2 class="section-title text-8xl font-oswald font-bold uppercase mb-16">
+                    Pricing
+                </h2>
+
+                <!-- Pricing Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Pricing Card 1 -->
+                    <div class="pricing-card border border-gray-700 p-8">
+                        <div class="pricing-icon mx-auto mb-6">🏋️</div> 
+                        <h3 class="text-2xl font-oswald font-bold uppercase mb-2">6 Month</h3>
+                        <p class="text-4xl font-oswald font-bold text-brand-red mb-1">$30<span class="text-lg text-gray-400">/M</span></p>
+                        <p class="text-sm text-gray-500 uppercase mb-6">(Single Class)</p>
+                        <ul class="text-left space-y-3 mb-8">
+                            <li class="flex items-center"><span class="text-brand-red mr-2">✔</span> Free Riding</li>
+                            <li class="flex items-center"><span class="text-brand-red mr-2">✔</span> Unlimited Equipments</li>
+                            <li class="flex items-center"><span class="text-brand-red mr-2">✔</span> Personal Trainer</li>
+                            <li class="flex items-center"><span class="text-brand-red mr-2">✔</span> Weight Losing Classes</li>
+                            <li class="flex items-center"><span class="text-brand-red mr-2">✔</span> Month To Mouth</li>
+                        </ul>
+                        <a href="{{url_for('contact')}}" class="pricing-btn-bordered">JOIN NOW</a> 
+                    </div>
+
+                    <!-- Pricing Card 2 (Highlighted) -->
+                    <div class="pricing-card border border-gray-700 p-8">
+                         <div class="pricing-icon mx-auto mb-6">🏋️</div> 
+                        <h3 class="text-2xl font-oswald font-bold uppercase mb-2">6 Month</h3>
+                        <p class="text-4xl font-oswald font-bold text-brand-red mb-1">$30<span class="text-lg text-gray-400">/M</span></p>
+                        <p class="text-sm text-gray-500 uppercase mb-6">(Single Class)</p>
+                        <ul class="text-left space-y-3 mb-8">
+                            <li class="flex items-center"><span class="text-brand-red mr-2">✔</span> Free Riding</li>
+                            <li class="flex items-center"><span class="text-brand-red mr-2">✔</span> Unlimited Equipments</li>
+                            <li class="flex items-center"><span class="text-brand-red mr-2">✔</span> Personal Trainer</li>
+                            <li class="flex items-center"><span class="text-brand-red mr-2">✔</span> Weight Losing Classes</li>
+                            <li class="flex items-center"><span class="text-brand-red mr-2">✔</span> Month To Mouth</li>
+                        </ul>
+                        <a href="{{url_for('contact')}}" class="pricing-btn-red">JOIN NOW</a>
+                    </div>
+
+                    <!-- Pricing Card 3 -->
+                     <div class="pricing-card border border-gray-700 p-8">
+                         <div class="pricing-icon mx-auto mb-6">🏋️</div> 
+                        <h3 class="text-2xl font-oswald font-bold uppercase mb-2">6 Month</h3>
+                        <p class="text-4xl font-oswald font-bold text-brand-red mb-1">$30<span class="text-lg text-gray-400">/M</span></p>
+                        <p class="text-sm text-gray-500 uppercase mb-6">(Single Class)</p>
+                        <ul class="text-left space-y-3 mb-8">
+                            <li class="flex items-center"><span class="text-brand-red mr-2">✔</span> Free Riding</li>
+                            <li class="flex items-center"><span class="text-brand-red mr-2">✔</span> Unlimited Equipments</li>
+                            <li class="flex items-center"><span class="text-brand-red mr-2">✔</span> Personal Trainer</li>
+                            <li class="flex items-center"><span class="text-brand-red mr-2">✔</span> Weight Losing Classes</li>
+                            <li class="flex items-center"><span class="text-brand-red mr-2">✔</span> Month To Mouth</li>
+                        </ul>
+                        <a href="{{url_for('contact')}}" class="pricing-btn-bordered">JOIN NOW</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- == About Me Section == -->
+        <section class="about-section py-24 px-4 relative z-10 bg-black">
+            <div class="container mx-auto max-w-7xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    
+                    <!-- Left Column: Image -->
+                    <div class="about-image relative"> 
+                        <img src="{{url_for('static',filename='images/about.png')}}" alt="About Zacson" class="w-full h-auto object-cover">
+                        <div class="about-image-overlay"></div> 
+                    </div>
+
+                    <!-- Right Column: Text Content -->
+                    <div class="about-content text-left"> 
+                        <h2 class="text-5xl font-oswald font-bold uppercase text-white mb-6">About Me</h2>
+                        <p class="text-gray-400 mb-4 leading-relaxed">
+                            You’ll look at graphs and charts in Task One, how to approach the task and the language needed for a successful answer. You’ll find strategies that help you understand Task One questions.
+                        </p>
+                         <p class="text-gray-400 mb-6 leading-relaxed">
+                            Task One, how to approach the task and the language needed for a successful answer. You’ll examine Task Two questions and learn how to plan, write and check academic essays.
+                         </p>
+                        <a href="{{url_for('courses')}}" class="view-courses-btn-bordered">MY COURSES</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- == Blog Section == -->
+        <section class="blog-section py-24 px-4 relative z-10 bg-black">
+            <div class="container mx-auto max-w-7xl text-center">
+                <!-- Section Title -->
+                <h2 class="section-title text-8xl font-oswald font-bold uppercase mb-16">
+                    From Blog
+                </h2>
+
+                <!-- Blog Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Blog Post Card 1 -->
+                    <div class="blog-card text-left">
+                        <img src="{{url_for('static',filename='images/blog1.png')}}" alt="Blog Post 1" class="w-full h-auto object-cover mb-6">
+                        <p class="text-sm text-gray-500 uppercase mb-2">Gym & Fitness</p>
+                        <h3 class="text-2xl font-oswald font-bold text-white uppercase mb-4 hover:text-brand-red transition-colors cursor-pointer">Your Antibiotic One Day To 10 Day Options</h3>
+                    </div>
+
+                    <!-- Blog Post Card 2 -->
+                     <div class="blog-card text-left">
+                        <img src="{{url_for('static',filename='images/blog2.png')}}" alt="Blog Post 2" class="w-full h-auto object-cover mb-6">
+                        <p class="text-sm text-gray-500 uppercase mb-2">Gym & Fitness</p>
+                        <h3 class="text-2xl font-oswald font-bold text-white uppercase mb-4 hover:text-brand-red transition-colors cursor-pointer">Your Antibiotic One Day To 10 Day Options</h3>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- == Video Section == -->
+        <section class="video-section relative z-10 h-[70vh] flex items-center justify-center"> 
+            <img src="{{url_for('static',filename='images/video.png')}}" alt="Gym workout video background" class="absolute inset-0 w-full h-full object-cover z-0">
+            <div class="absolute inset-0 bg-black opacity-60 z-10"></div>
+            <button class="play-button z-20"> 
+                ▶
+            </button>
+        </section>
+
+         <!-- == Contact Info Section == -->
+        <section class="contact-info-section py-16 px-4 relative z-10 bg-black">
+            <div class="container mx-auto max-w-7xl">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                    
+                    <!-- Location -->
+                    <div class="flex flex-col md:flex-row items-center gap-4">
+                        <div class="contact-icon">📍</div> 
+                        <div>
+                            <h4 class="font-oswald font-bold text-white uppercase text-xl mb-1">Location</h4>
+                            <p class="text-gray-400">You’ll look at graphs and charts in Task One, how to approach the task</p>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="flex flex-col md:flex-row items-center gap-4">
+                        <div class="contact-icon">📞</div> 
+                         <div>
+                            <h4 class="font-oswald font-bold text-white uppercase text-xl mb-1">Phone</h4>
+                            <p class="text-gray-400">(90) 277 278 2566</p>
+                            <p class="text-gray-400">(78) 267 256 2578</p>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                     <div class="flex flex-col md:flex-row items-center gap-4">
+                        <div class="contact-icon">✉️</div> 
+                         <div>
+                            <h4 class="font-oswald font-bold text-white uppercase text-xl mb-1">Email</h4>
+                            <p class="text-gray-400">jacson767@gmail.com</p>
+                            <p class="text-gray-400">contact56@zacson.com</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- == Footer Section == -->
+    <footer class="main-footer py-16 px-4 relative z-10 bg-black border-t border-gray-800">
+        <div class="container mx-auto max-w-7xl text-center">
+            <!-- Footer Top: Logo, Nav, Social -->
+            <div class="footer-top mb-12">
+                <a href="#" class="text-4xl font-bold font-oswald text-white mb-6 inline-block">SOHEL</a>
+                <nav class="flex justify-center space-x-6 mb-6">
+                    <a href="{{url_for('home')}}" class="font-bold hover:text-red-500 transition-colors">HOME</a>
+                    <a href="{{url_for('about')}}" class="font-bold hover:text-red-500 transition-colors">ABOUT</a>
+                    <a href="{{url_for('courses')}}" class="font-bold hover:text-red-500 transition-colors">COURSES</a>
+                    <a href="{{url_for('pricing')}}" class="font-bold hover:text-red-500 transition-colors">PRICING</a>
+                    <a href="{{url_for('gallery')}}" class="font-bold hover:text-red-500 transition-colors">GALLERY</a>
+                    <a href="{{url_for('contact')}}" class="font-bold hover:text-red-500 transition-colors">CONTACT</a>
+                </nav>
+                 <!-- FIX: Added 'footer-social' class for potential styling -->
+                <div class="flex justify-center space-x-4 footer-social">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">F</a> 
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">T</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">P</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">I</a> 
+                </div>
+            </div>
+            
+            <!-- Footer Bottom: Copyright -->
+            <div class="footer-bottom border-t border-gray-800 pt-8">
+                <p class="text-gray-500 text-sm">
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with ❤️ by Sohel
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+</html>
+
