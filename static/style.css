@@ -1,92 +1,77 @@
-/* Humari custom fonts ko apply karna */
 
-/* Oswald font ko headings ke liye */
 .font-oswald {
     font-family: 'Oswald', sans-serif;
 }
 
-/* Roboto font ko body text ke liye */
+
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #000; /* Page ka default background kaala */
+    background-color: #000; 
 }
 
-/* Tailwind ko batana ki 'brand-red' naam ka ek naya color hai */
+
 .bg-brand-red {
-    background-color: #CC0000; /* Yeh hamara main laal color hai */
+    background-color: #CC0000; 
 }
 .text-brand-red {
     color: #CC0000;
 }
 
-/* Header ko background image ke upar dikhane ke liye */
+
 header {
-    background-color: transparent; /* Shuru mein header transparent hai */
+    background-color: transparent; 
     transition: background-color 0.3s ease-in-out;
 }
 
-/* Jab JavaScript is class ko header mein add karega,
-  toh header ka background laal ho jaayega.
-*/
+
 header.header-scrolled {
-    background-color: #CC0000; /* Scroll karne par laal background */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Halka sa shadow */
+    background-color: #CC0000; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 
-/* --- Hero Section Styles --- */
+
 
 .hero-section {
     position: relative;
-    /* Path ko root-relative kar diya hai */
+    
     background-image: url('/static/images/h1_hero.png');
     background-size: cover;
-    background-position: center; /* Center horizontally, align to right */
+    background-position: center; 
     overflow: hidden;
 }
 .hero-text{
     color: transparent;
-    -webkit-text-stroke: 1px white; /* Outline effect */
+    -webkit-text-stroke: 1px white; 
     text-stroke: 1px white;
     letter-spacing: 2px;
 }
 
-/* Red diagonal overlay (Laal patti) */
-/* .hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -15%;
-    width: 60%;
-    height: 100%;
-    background-color: rgba(204, 0, 0, 0.7); /* Humara brand-red (CC0000) ka transparent version */
-    /* transform: skewX(-20deg);
-    z-index: 1;
-} */ 
+ 
 
-/* Hero content ko overlay ke upar laane ke liye */
+
 .hero-section .container {
     position: relative;
-    z-index: 2; /* Content ko laal patti ke upar rakhta hai */
+    z-index: 2; 
 }
 
 
-/* --- Training Section Styles --- */
+
 
 .training-card {
     background-size: cover;
-    background-position: center center; /* Default position */
-    overflow: hidden; /* Overlay ko card ke andar rakhta hai */
-    position: relative; /* ::after overlay ke liye zaroori */
-    display: flex;      /* Flexbox use karenge */
-    align-items: center; /* Vertically center */
-    justify-content: center; /* Horizontally center */
-    min-height: 80vh; /* Minimum height, adjust as needed */
-    padding: 3rem; /* Padding for content */
-    text-align: center; /* Center text */
+    background-position: center center; 
+    overflow: hidden; 
+    position: relative; 
+    display: flex;      
+    align-items: center; 
+    justify-content: center; 
+    min-height: 80vh; 
+    padding: 3rem; 
+    text-align: center; 
 }
 
-/* Dono cards par kaala overlay */
+
 .training-card::after {
     content: '';
     position: absolute;
@@ -94,30 +79,30 @@ header.header-scrolled {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6); /* Thoda darker overlay */
-    z-index: 1; /* Overlay content ke peeche */
+    background-color: rgba(0, 0, 0, 0.6); 
+    z-index: 1;
 }
 
-/* Content ko overlay ke upar laane ke liye */
+
 .training-card > div {
     position: relative;
     z-index: 2;
-    max-width: 600px; /* Limit content width */
+    max-width: 600px; 
 }
 
-/* Training image 1 */
+
 .training-card-1 {
-    /* Replace with your image */
+    
     background-image: url('/static/images/h1_squats.png');
 }
 
-/* Training image 2 */
+
 .training-card-2 {
-     /* Replace with your image */
+
     background-image: url('/static/images/h1_tilt.png');
 }
 
-/* Custom button styles */
+
 .view-courses-btn-bordered {
     display: inline-block;
     border: 2px solid white;
@@ -134,13 +119,13 @@ header.header-scrolled {
 
 .view-courses-btn-red {
     display: inline-block;
-    background-color: #CC0000; /* brand-red */
+    background-color: #CC0000; 
     color: white;
     font-weight: bold;
     padding: 0.75rem 2rem;
     margin-top: 1rem;
     transition: background-color 0.3s, color 0.3s;
-    border: 2px solid #CC0000; /* Border bhi add kar dete hain hover ke liye */
+    border: 2px solid #CC0000; 
 }
 .view-courses-btn-red:hover {
     background-color: white;
@@ -149,18 +134,16 @@ header.header-scrolled {
 }
 
 
-/* --- Offers Section Styles --- */
 
-/* Section title ke liye outline effect */
 .section-title {
     color: transparent;
-    -webkit-text-stroke: 1px white; /* Outline effect */
+    -webkit-text-stroke: 1px white; 
     text-stroke: 1px white;
-    letter-spacing: 2px; /* Thoda spacing badhaya */
+    letter-spacing: 2px; 
 }
 
 .offer-card img {
-    border-bottom: 4px solid #CC0000; /* Image ke neeche laal border */
+    border-bottom: 4px solid #CC0000; 
 }
 
 
@@ -173,7 +156,7 @@ header.header-scrolled {
 
 .pricing{
     color: transparent;
-    -webkit-text-stroke: 1px white; /* Outline effect */
+    -webkit-text-stroke: 1px white; 
     text-stroke: 1px white;
     letter-spacing: 2px;
 }
@@ -204,7 +187,7 @@ header.header-scrolled {
 }
 .from-blog-text{
     color: transparent;
-    -webkit-text-stroke: 1px white; /* Outline effect */
+    -webkit-text-stroke: 1px white; 
     text-stroke: 1px white;
     letter-spacing: 2px;
     font:bold;
@@ -222,19 +205,19 @@ header.header-scrolled {
 }
 
 #preloader {
-    position: fixed; /* Poori screen par fix */
+    position: fixed; 
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #fff; /* White background */
+    background-color: #fff; 
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* Sabse upar */
+    z-index: 9999; 
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.5s ease-out, visibility 0.5s ease-out; /* Smooth fade out */
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out; 
 }
 
 #preloader.hidden {
@@ -247,13 +230,13 @@ header.header-scrolled {
     height: 100px;
     border-radius: 50%;
     border: 5px solid transparent;
-    border-top-color: #CC0000; /* Laal spinner */
+    border-top-color: #CC0000; 
     border-right-color: #CC0000;
-    animation: spin 1s linear infinite; /* Animation ka naam 'spin', 1 second, lagatar */
-    position: relative; /* Logo ko center mein rakhne ke liye */
+    animation: spin 1s linear infinite;
+    position: relative; 
 }
 
-/* Spinner ke andar logo */
+
 .loader span {
     position: absolute;
     top: 50%;
@@ -262,23 +245,23 @@ header.header-scrolled {
     font-family: 'Oswald', sans-serif;
     font-weight: bold;
     font-size: 1.5rem;
-    color: #CC0000; /* Laal text */
+    color: #CC0000; 
 }
 
-/* Animation definition */
+
 @keyframes spin {
     to {
-        transform: rotate(360deg); /* 360 degree ghuma do */
+        transform: rotate(360deg);
     }
 }
 
 .contact-send-btn {
     display: inline-block;
-    border: 2px solid #CC0000; /* Laal border */
-    color: #CC0000; /* Laal text */
+    border: 2px solid #CC0000; 
+    color: #CC0000; 
     background-color: transparent;
     font-weight: bold;
-    padding: 0.75rem 2.5rem; /* Thoda zyada padding */
+    padding: 0.75rem 2.5rem;
     margin-top: 1rem;
     transition: background-color 0.3s, color 0.3s;
     cursor: pointer;
@@ -289,57 +272,56 @@ header.header-scrolled {
     color: white;
 }
 
-/* --- Flash Message Styles --- */
-/* Container ko screen ke upar center mein fix karta hai */
+
 .flash-messages-container {
     position: fixed; 
-    top: 80px; /* Header ke neeche (header ki height ke hisaab se adjust karein) */
+    top: 80px; 
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
-    max-width: 600px; /* Maximum width */
-    z-index: 1050; /* Header se bhi upar */
+    max-width: 600px; 
+    z-index: 1050; 
 }
 
-/* Har message box ka basic style */
+
 .flash-message {
     padding: 1rem 1.5rem;
     border-radius: 0.25rem;
-    position: relative; /* Close button ke liye */
+    position: relative; 
     opacity: 0.95;
-    color: white; /* Default text color */
-    margin-bottom: 1rem; /* Messages ke beech space */
-    font-family: 'Roboto', sans-serif; /* Consistent font */
+    color: white; 
+    margin-bottom: 1rem;
+    font-family: 'Roboto', sans-serif; 
 }
 
-/* Category ke hisaab se background color */
+
 .flash-success {
-    background-color: #28a745; /* Green */
+    background-color: #28a745; 
 }
 .flash-danger {
-    background-color: #dc3545; /* Red */
+    background-color: #dc3545; 
 }
 .flash-warning {
-    background-color: #ffc107; /* Yellow */
-    color: #333; /* Dark text for yellow bg */
+    background-color: #ffc107; 
+    color: #333; 
 }
 .flash-info {
-    background-color: #17a2b8; /* Teal */
+    background-color: #17a2b8;
 }
 
-/* Close button ka style */
+
 .flash-close {
     position: absolute;
     top: 0.5rem;
     right: 0.75rem;
     font-size: 1.5rem;
     font-weight: bold;
-    color: inherit; /* Message jaisa color */
+    color: inherit; 
     background: none;
     border: none;
     cursor: pointer;
     opacity: 0.7;
-    line-height: 1; /* Button ko align karne ke liye */
+    line-height: 1; 
 }
 .flash-close:hover {
     opacity: 1;

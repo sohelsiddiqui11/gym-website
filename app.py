@@ -42,7 +42,6 @@ def home():
 
 @app.route('/about')
 def about():
-    # About route ab 'about' naam se jaana jaayega
     return render_template('about.html')
 
 @app.route('/courses')
