@@ -47,5 +47,27 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
+    const mobileMenuButton = document.getElementById('mobile-menu-button'); 
+    const mobileMenu = document.getElementById('mobile-menu'); 
+
+ 
+    if (mobileMenuButton && mobileMenu) {
+      
+        mobileMenuButton.addEventListener('click', () => {
+            
+
+            mobileMenu.classList.toggle('mobile-menu-hidden'); 
+            mobileMenu.classList.toggle('mobile-menu-visible');
+
+            
+             if (mobileMenu.classList.contains('mobile-menu-visible')) {
+                 mobileMenuButton.innerHTML = '✕'; 
+             } else {
+                 mobileMenuButton.innerHTML = '☰'; 
+             }
+        });
+    }
+
 });
 

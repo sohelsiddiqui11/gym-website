@@ -8,13 +8,13 @@ import os
 
 app = Flask(__name__)
 
-app.secret_key = os.environ.get('SECRET_KEY')
+app.secret_key = os.environ.get('SECRET_KEY', 'sohel_siddiqui')
 
 db_config = {
-    'host': os.environ.get('DB_HOST'),
-    'user': os.environ.get('DB_USER'),
-    'password': os.environ.get('DB_PASSWORD'),
-    'database': os.environ.get('DB_NAME')
+    'host': os.environ.get('DB_HOST','127.0.0.1'),
+    'user': os.environ.get('DB_USER','root'),
+    'password': os.environ.get('DB_PASSWORD','Sohel@123'),
+    'database': os.environ.get('DB_NAME','gym')
 }
 
 @app.route('/submission',methods=['GET','POST'])
@@ -42,6 +42,7 @@ def home():
 
 @app.route('/about')
 def about():
+    # About route ab 'about' naam se jaana jaayega
     return render_template('about.html')
 
 @app.route('/courses')

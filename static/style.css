@@ -47,8 +47,57 @@ header.header-scrolled {
     letter-spacing: 2px;
 }
 
- 
+@media (max-width: 768px) {
+    .hero-section {
+        background-position: center center; /* Mobile par image ko center mein rakho */
+    }
+     /* Optional: Mobile par laal patti ko thoda adjust kar sakte hain agar zaroorat ho */
+    .hero-section::before {
+        width: 80%; /* Thodi zyada cover kare */
+        left: -25%;
+    }
+    /* Optional: Mobile par heading ka size chhota karna */
+    .hero-section h1 {
+        font-size: 4rem; /* text-6xl ke barabar */
+    }
+     .hero-section h2 {
+        font-size: 1.875rem; /* text-3xl ke barabar */
+    }
+}
 
+/* --- Mobile Menu Styles --- */
+
+/* Initially hide the mobile menu */
+.mobile-menu-hidden {
+    max-height: 0; /* Shuru mein height 0 */
+    overflow: hidden; /* Extra content chhupa do */
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); /* Closing animation */
+}
+
+/* Class to show the mobile menu */
+.mobile-menu-visible {
+    max-height: 100vh; /* Ya itni height jo saare links ko fit kar de */
+    overflow: hidden; /* Abhi bhi overflow ko handle karo */
+    transition: max-height 1s ease-in-out; /* Opening animation */
+}
+
+/* Header ko relative position dena zaroori hai taaki absolute positioned mobile menu uske neeche aaye */
+header nav {
+    position: relative;
+}
+
+/* Mobile menu ka basic positioning aur styling */
+#mobile-menu {
+    position: absolute; /* Header ke neeche aayega */
+    top: 100%; /* Header ke bilkul neeche se shuru */
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.95); /* Thoda dark background */
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 20; /* Baaki content ke upar */
+    /* Height aur overflow upar classes se control honge */
+}
 
 .hero-section .container {
     position: relative;
@@ -296,7 +345,7 @@ header.header-scrolled {
 
 
 .flash-success {
-    background-color: #28a745; 
+    background-color:#CC0000; 
 }
 .flash-danger {
     background-color: #dc3545; 

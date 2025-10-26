@@ -43,9 +43,23 @@
                 </a>
                 
                 <!-- Mobile Menu Button (Small screens) -->
-                <button class="lg:hidden text-white text-3xl">
+                <button id="mobile-menu-button" class="lg:hidden text-white text-3xl z-30"> <!-- Ensure button is above menu -->
                     &#9776; <!-- Hamburger icon -->
                 </button>
+
+                <!-- == Mobile Menu (Initially Hidden) == -->
+                <div id="mobile-menu" class="mobile-menu-hidden lg:hidden absolute top-full left-0 right-0 bg-black bg-opacity-90 py-4 px-4 shadow-lg z-20">
+                     <a href="{{ url_for('home') }}" class="block text-white font-bold py-2 hover:text-red-500">HOME</a>
+                     <a href="{{ url_for('about') }}" class="block text-white font-bold py-2 hover:text-red-500">ABOUT</a>
+                     <a href="{{ url_for('courses') }}" class="block text-white font-bold py-2 hover:text-red-500">COURSES</a>
+                     <a href="{{ url_for('pricing') }}" class="block text-white font-bold py-2 hover:text-red-500">PRICING</a>
+                     <a href="{{ url_for('gallery') }}" class="block text-white font-bold py-2 hover:text-red-500">GALLERY</a>
+                     <a href="#" class="block text-white font-bold py-2 hover:text-red-500">BLOG</a>
+                     <a href="{{ url_for('contact') }}" class="block text-white font-bold py-2 hover:text-red-500">CONTACT</a>
+                     <a href="{{ url_for('contact') }}" class="mt-4 inline-block bg-brand-red text-white font-bold py-3 px-6 hover:bg-white hover:text-black transition-colors w-full text-center">
+                        CONTACT ME
+                     </a>
+                </div>
 
             </nav>
         </div>
